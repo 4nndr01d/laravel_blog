@@ -6,25 +6,20 @@
     <title>AdminLTE 2 | Blank Page</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="/css/admin.css">
+
     <style>
-        table.table form
-        {
+        table.table form{
             display: inline-block;
         }
-        button.delete
-        {
+
+        button.delete{
             background: transparent;
             border: none;
             color: #337ab7;
             padding: 0px;
         }
+
     </style>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
@@ -182,10 +177,6 @@
             </div>
         </nav>
     </header>
-
-    <!-- =============================================== -->
-
-    <!-- Left side column. contains the sidebar -->
     <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
@@ -211,16 +202,33 @@
             </form>
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            @include('admin._sidebar')
+            <ul class="sidebar-menu">
+                <li class="header">MAIN NAVIGATION</li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
+                    </a>
+                </li>
+                <li><a href="/admin/posts"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
+                <li><a href="/admin/categories"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
+                <li><a href="/admin/tags"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-commenting"></i> <span>Комментарии</span>
+                        <span class="pull-right-container">
+              <small class="label pull-right bg-green">5</small>
+            </span>
+                    </a>
+                </li>
+                <li><a href="/admin/users"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
+                <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
+
+            </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
 
-    <!-- =============================================== -->
-
-    <!-- Content Wrapper. Contains page content -->
-@yield('content')
-<!-- /.content-wrapper -->
+    @yield('content')
 
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
@@ -420,22 +428,8 @@
             <!-- /.tab-pane -->
         </div>
     </aside>
-    <!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-         immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
-
 <script src="/js/admin.js"></script>
-<script src="/plugins/ckeditor/ckeditor.js"></script>
-<script src="/plugins/ckfinder/ckfinder.js"></script>
-<script>
-    $(document).ready(function(){
-        var editor = CKEDITOR.replaceAll();
-        CKFinder.setupCKEditor( editor );
-    })
-
-</script>
 </body>
 </html>

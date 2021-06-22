@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email',
     ];
 
     /**
@@ -53,14 +53,26 @@ class User extends Authenticatable
     public function edit($fields)
     {
         $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
         $this->save();
+    }
+
+    public function generatePassword($password){
+        if($password != null){
+            $this->password = bcrypt($password);
+            $this->save();
+        }
     }
 
     public function remove()
     {
-        Storage::delete('uploads/' . $this->image);
+        $this->removeAvatar();
         $this->delete();
+    }
+
+    public function removeAvatar(){
+        if ($this->image != null) {
+            Storage::delete('uploads/' . $this->image);
+        }
     }
 
     public function uploadAvatar($image)
@@ -68,19 +80,20 @@ class User extends Authenticatable
         if ($image == null) {
             return;
         }
-        Storage::delete('uploads/' . $this->image);
+        $this->removeAvatar();
+
         $filename = str_random(10) . "." . $image->extension();
-        $image->saveAs('uploads', $filename);
-        $this->image = $filename;
+        $image->storeAs('uploads', $filename);
+        $this->avatar = $filename;
         $this->save();
     }
 
     public function getAvatar()
     {
-        if ($this->image == null) {
-            return '/img/no-user-image.png';
+        if ($this->avatar == null) {
+            return '/img/no-image.png';
         }
-        return '/uploads/' . $this->image;
+        return '/uploads/' . $this->avatar;
     }
 
     public function makeAdmin()
@@ -113,7 +126,6 @@ class User extends Authenticatable
         $this->status = User::IS_ACTIVE;
         $this->save();
     }
-
 
 
     public function toggleBan($value)

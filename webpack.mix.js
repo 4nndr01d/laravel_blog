@@ -40,3 +40,5 @@ mix.scripts([
 
 mix.copy('resources/assets/admin/bootstrap/fonts', 'public/fonts')
 mix.copy('resources/assets/admin/font-awesome/4.5.0/css/font-awesome.min.css', 'public/fonts')
+mix.copy('resources/assets/admin/dist/img', 'public/img')
+mix.copy('resources/assets/admin/plugins/iCheck/minimal/blue.png', 'public/css')
