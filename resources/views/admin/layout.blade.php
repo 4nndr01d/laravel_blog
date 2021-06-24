@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="/css/admin.css">
 
     <style>
-        table.table form{
+        table.table form {
             display: inline-block;
         }
 
-        button.delete{
+        button.delete {
             background: transparent;
             border: none;
             color: #337ab7;
@@ -113,7 +113,9 @@
                                                 <small class="pull-right">20%</small>
                                             </h3>
                                             <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
+                                                     role="progressbar" aria-valuenow="20" aria-valuemin="0"
+                                                     aria-valuemax="100">
                                                     <span class="sr-only">20% Complete</span>
                                                 </div>
                                             </div>
@@ -202,28 +204,7 @@
             </form>
             <!-- /.search form -->
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
-                <li class="header">MAIN NAVIGATION</li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>Админ-панель</span>
-                    </a>
-                </li>
-                <li><a href="/admin/posts"><i class="fa fa-sticky-note-o"></i> <span>Посты</span></a></li>
-                <li><a href="/admin/categories"><i class="fa fa-list-ul"></i> <span>Категории</span></a></li>
-                <li><a href="/admin/tags"><i class="fa fa-tags"></i> <span>Теги</span></a></li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-commenting"></i> <span>Комментарии</span>
-                        <span class="pull-right-container">
-              <small class="label pull-right bg-green">5</small>
-            </span>
-                    </a>
-                </li>
-                <li><a href="/admin/users"><i class="fa fa-users"></i> <span>Пользователи</span></a></li>
-                <li><a href="#"><i class="fa fa-user-plus"></i> <span>Подписчики</span></a></li>
-
-            </ul>
+            @include('admin._sidebar')
         </section>
         <!-- /.sidebar -->
     </aside>
@@ -297,8 +278,6 @@
                         </a>
                     </li>
                 </ul>
-                <!-- /.control-sidebar-menu -->
-
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
                 <ul class="control-sidebar-menu">
                     <li>
@@ -350,30 +329,20 @@
                         </a>
                     </li>
                 </ul>
-                <!-- /.control-sidebar-menu -->
-
             </div>
-            <!-- /.tab-pane -->
-            <!-- Stats tab content -->
             <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-            <!-- /.tab-pane -->
-            <!-- Settings tab content -->
             <div class="tab-pane" id="control-sidebar-settings-tab">
                 <form method="post">
                     <h3 class="control-sidebar-heading">General Settings</h3>
-
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Report panel usage
                             <input type="checkbox" class="pull-right" checked>
                         </label>
-
                         <p>
                             Some information about this general settings option
                         </p>
                     </div>
-                    <!-- /.form-group -->
-
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Allow mail redirect
@@ -384,52 +353,48 @@
                             Other sets of options are available
                         </p>
                     </div>
-                    <!-- /.form-group -->
-
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Expose author name in posts
                             <input type="checkbox" class="pull-right" checked>
                         </label>
-
                         <p>
                             Allow the user to show his name in blog posts
                         </p>
                     </div>
-                    <!-- /.form-group -->
-
                     <h3 class="control-sidebar-heading">Chat Settings</h3>
-
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Show me as online
                             <input type="checkbox" class="pull-right" checked>
                         </label>
                     </div>
-                    <!-- /.form-group -->
-
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Turn off notifications
                             <input type="checkbox" class="pull-right">
                         </label>
                     </div>
-                    <!-- /.form-group -->
-
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Delete chat history
                             <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
                         </label>
                     </div>
-                    <!-- /.form-group -->
                 </form>
             </div>
-            <!-- /.tab-pane -->
         </div>
     </aside>
     <div class="control-sidebar-bg"></div>
 </div>
 <script src="/js/admin.js"></script>
-</body>
+<script src="/plugins/ckeditor/ckeditor.js"></script>
+<script src="/plugins/ckfinder/ckfinder.js"></script>
+<script>
+    $(document).ready(function () {
+        var editor = CKEDITOR.replaceAll();
+        CKFinder.setupCKEditor(editor);
+    })
+</script>
+< /body>
 </html>

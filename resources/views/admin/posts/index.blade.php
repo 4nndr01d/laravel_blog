@@ -20,10 +20,6 @@
         <!-- Main content -->
         <section class="content">
 
-            {{Form::open([
-                'route' => 'posts.store',
-                'files' => true
-            ])}}
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">Листинг сущности</h3>
@@ -56,8 +52,10 @@
                                 <img src="{{$post->getImage()}}" alt="" width="100">
                             </td>
                             <td><a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil"></a>
-                                {{Form::open(['route'=>['posts.destroy', $post->id], 'method' => 'delete'])}}
-                                    <a href="#" class="fa fa-remove"></a>
+                                {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
+                                <button  type="submit" class="delete">
+                                    <i class="fa fa-remove"></i>
+                                </button>
                                 {{Form::close()}}
                             </td>
                         </tr>
@@ -67,7 +65,6 @@
                 </div>
                 <!-- /.box-body -->
             </div>
-            {{Form::close()}}
 
         </section>
         <!-- /.content -->

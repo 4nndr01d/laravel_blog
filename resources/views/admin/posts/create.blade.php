@@ -85,8 +85,14 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Полный текст</label>
-                            <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <label for="content">Полный текст</label>
+                            <textarea name="content" id="content" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="description">Краткое описание</label>
+                            <textarea name="description" id="description"  cols="30" rows="10" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>

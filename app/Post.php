@@ -14,7 +14,7 @@ class Post extends Model
     const IS_DRAFT = 0;
     const IS_PUBLIC = 1;
 
-    protected $fillable = ['title', 'content', 'date'];
+    protected $fillable = ['title', 'content', 'date', 'description'];
 
     public function category()
     {
@@ -26,10 +26,24 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function getDate(){
+        return Carbon::createFromFormat("d/m/y", $this->date)->format('F d, Y');
+    }
+
+    public function getCategoryId(){
+        return ($this->category!=null) ? $this->category->id : null;
+    }
+
     public function setDateAttribute($value)
     {
         $date = Carbon::createFromFormat('d/m/y', $value)->format('Y-m-d');
         $this->attributes['date'] = $date;
+    }
+
+    public function getDateAttribute($value)
+    {
+        $date = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/y');
+        return $date;
     }
 
     public function getCategoryTitle()
