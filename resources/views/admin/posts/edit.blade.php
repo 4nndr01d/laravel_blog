@@ -78,7 +78,7 @@
                         <!-- checkbox -->
                         <div class="form-group">
                             <label>
-                                {{Form::checkBox('status', '1', $post->is_featured, ['class'=> 'minimal'])}}
+                                {{Form::checkBox('status', '1', $post->status, ['class'=> 'minimal'])}}
                             </label>
                             <label>
                                 Черновик
