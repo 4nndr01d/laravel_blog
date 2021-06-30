@@ -29,12 +29,12 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Имя</label>
                             <input type="text" class="form-control" name="name" id="exampleInputEmail1" placeholder=""
-                                   value="Рахим">
+                                   value="{{$user->name}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">E-mail</label>
                             <input type="email" class="form-control" name="email" id="exampleInputEmail1" placeholder=""
-                                   value="rahim@marlindev.ru">
+                                   value="{{$user->email}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Пароль</label>

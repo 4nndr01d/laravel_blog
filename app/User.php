@@ -56,8 +56,9 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function generatePassword($password){
-        if($password != null){
+    public function generatePassword($password)
+    {
+        if ($password != null) {
             $this->password = bcrypt($password);
             $this->save();
         }
@@ -69,7 +70,8 @@ class User extends Authenticatable
         $this->delete();
     }
 
-    public function removeAvatar(){
+    public function removeAvatar()
+    {
         if ($this->image != null) {
             Storage::delete('uploads/' . $this->image);
         }

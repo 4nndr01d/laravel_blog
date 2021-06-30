@@ -11,16 +11,24 @@ class HomeController extends Controller
 {
     public function index()
     {
+//        if (\Auth::check()) {
+//
+//        } else {
+//
+//        }
+
         $posts = Post::paginate(2);
-        return view('pages.index',compact('posts'));
+        return view('pages.index', compact('posts'));
     }
 
-    public function show($slug){
+    public function show($slug)
+    {
         $post = Post::where("slug", $slug)->firstOrFail();
         return view('pages.show', compact('post'));
     }
 
-    public function tag($slug){
+    public function tag($slug)
+    {
         $tag = Tag::where('slug', $slug)->firstOrFail();
 
         $posts = $tag->posts()->where('status', 0)->paginate(4);
@@ -28,7 +36,8 @@ class HomeController extends Controller
         return view('pages.list', ['posts' => $posts]);
     }
 
-    public function category($slug){
+    public function category($slug)
+    {
         $category = Category::where('slug', $slug)->firstOrFail();
 
         $posts = $category->posts()->where('status', 0)->paginate(4);
