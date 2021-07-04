@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Auth;
+
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -19,6 +21,10 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
     public function author()
@@ -102,7 +108,7 @@ class Post extends Model
     {
         $post = new static;
         $post->fill($fields);
-        $post->user_id = 1;
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return $post;
@@ -137,6 +143,10 @@ class Post extends Model
         $image->storeAs('uploads', $filename);
         $this->image = $filename;
         $this->save();
+    }
+
+    public function getComments(){
+        return $this->comments()->where('status', 1)->get();
     }
 
     public function getImage()

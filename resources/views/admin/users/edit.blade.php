@@ -37,6 +37,11 @@
                                    value="{{$user->email}}">
                         </div>
                         <div class="form-group">
+                            <label for="exampleInputEmail1">Мысль</label>
+                            <input type="text" class="form-control" name="thought" id="exampleInputEmail1" placeholder=""
+                                   value="{{$user->thought}}">
+                        </div>
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Пароль</label>
                             <input type="password" class="form-control" name="password" id="exampleInputEmail1" placeholder="">
                         </div>
